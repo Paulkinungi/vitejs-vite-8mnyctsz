@@ -5,12 +5,22 @@
     <div id="Imgdesc">
       <h1>{{ title }}</h1>
     <p>{{ currency }} {{ price }}</p>
+    <label for=""><p>Favorite?</p>
+      <input @click="toggleFav" type="checkbox">
+    </label>
+    <p id="isfavorite">{{ status }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default{
+  data(){
+    return{
+      isfavorite:false,
+      status:''
+    }
+  },
   props:{
     title:String,
     price:Number,
@@ -18,6 +28,17 @@ export default{
     currency:{
       type:String,
       default:'Kes'
+    }
+  },
+  methods:{
+    toggleFav(event){
+      this.isfavorite =!this.isfavorite;
+      if(this.isfavorite){
+        this.status="Marked Favorite!";
+      }
+      else{
+        this.status ="";
+      }
     }
   }
 }
