@@ -15,10 +15,10 @@ export default {
   data() {
     return {
       products: [
-        { title: "Dessert Cake", price: 2000, imageUrl: "/img/desert.jpeg" },
-        { title: "Drinks", price: 2500, imageUrl: "/img/drink.jpeg" },
-        { title: "Cake", price: 3000, imageUrl: "/img/fruit.jpeg" },
-        { title: "Ice Cream", price: 1500, imageUrl: "/img/icecream.jpeg" },
+        { title: "Dessert Cake", price: 2000, imageUrl: "src/img/desert.jpeg" },
+        { title: "Drinks", price: 2500, imageUrl: "src/img/drink.jpeg" },
+        { title: "Cake", price: 3000, imageUrl: "src/img/cake.jpeg" },
+        { title: "Ice Cream", price: 1500, imageUrl: "src/img/iceCream.jpeg" },
         // Add more products here easily
       ]
     }
