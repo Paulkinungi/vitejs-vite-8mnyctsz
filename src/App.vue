@@ -6,6 +6,7 @@
       :title="product.title"
       :price="product.price"
       :image-url="product.imageUrl"
+      @favorite-toggled="handleFavorite"
     />
   </div>
 </template>
@@ -21,6 +22,11 @@ export default {
         { title: "Ice Cream", price: 1500, imageUrl: "src/img/iceCream.jpeg" },
         // Add more products here easily
       ]
+    }
+  },
+  methods:{
+    handleFavorite(isfavorite){
+      alert(isfavorite ? 'Favorited' : 'Unfavorited')
     }
   }
 }

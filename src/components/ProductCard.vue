@@ -33,12 +33,8 @@ export default{
   methods:{
     toggleFav(event){
       this.isfavorite =!this.isfavorite;
-      if(this.isfavorite){
-        this.status="Marked Favorite!";
-      }
-      else{
-        this.status ="";
-      }
+      this.status= this.isfavorite? "Marked Favorite" : "";
+      this.$emit('favorite-toggled', this.isfavorite);
     }
   }
 }
