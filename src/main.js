@@ -1,8 +1,7 @@
 import { createApp } from 'vue'
-
 import App from './App.vue'
-import ProductCard from './components/ProductCard.vue'
+import ToDoItem from './components/ToDoItem.vue'
 
 const app = createApp(App)
-app.component('product-card', ProductCard)
+app.component('todo-item', ToDoItem)
 app.mount("#app")

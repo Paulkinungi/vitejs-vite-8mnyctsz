@@ -1,41 +1,37 @@
 <template>
-  <div class="products-container">
-    <product-card 
-      v-for="(product, index) in products"
+  <h3>Todo List</h3>
+  <ul>
+    <todo-item
+      v-for="(x, index) in items"
       :key="index"
-      :title="product.title"
-      :price="product.price"
-      :image-url="product.imageUrl"
-      @favorite-toggled="handleFavorite"
+      :item-name="x"
+      @remove="removeItem(index)"  
+      style="background-color: lightgreen;"
     />
-  </div>
+  </ul>
+
+  <input v-model="newItem" placeholder="Add new todo" />
+  <button @click="addItem">Add</button>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      products: [
-        { title: "Dessert Cake", price: 2000, imageUrl: "src/img/desert.jpeg" },
-        { title: "Drinks", price: 2500, imageUrl: "src/img/drink.jpeg" },
-        { title: "Cake", price: 3000, imageUrl: "src/img/cake.jpeg" },
-        { title: "Ice Cream", price: 1500, imageUrl: "src/img/iceCream.jpeg" },
-        // Add more products here easily
-      ]
+      newItem: '',
+      items: ['Buy Apples', 'Make Pizza', 'Mow the Lawn']
     }
   },
-  methods:{
-    handleFavorite(isfavorite){
-      alert(isfavorite ? 'Favorited' : 'Unfavorited')
+  methods: {
+    addItem() {
+      if (this.newItem.trim() !== '') {
+        this.items.push(this.newItem);
+        this.newItem = "";
+      }
+    },
+    removeItem(index) {
+      this.items.splice(index, 1);
     }
   }
 }
 </script>
-
-<style>
-.products-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-}
-</style>
