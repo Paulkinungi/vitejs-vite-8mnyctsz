@@ -1,7 +1,6 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import ToDoItem from './components/ToDoItem.vue'
+import { createApp } from "vue";
 
-const app = createApp(App)
-app.component('todo-item', ToDoItem)
-app.mount("#app")
+import App from './App.vue'
+
+App.component('Comp-two', CompTwo)
+App.mount("#app")
