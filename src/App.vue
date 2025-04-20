@@ -1,49 +1,26 @@
 <template>
-  <h1>To Do List</h1>
-  <Task-List :tasks="tasks"/>
-  <Add-Task @addTask="addTask"/>
+  <p>Try clicking the button more than once to see new animals picked randomly.</p>
+  <button @click="fetchData">Fetch Data</button>
+  <div v-if="randomMammal">
+    <h2>{{ randomMammal.name }}</h2>
+    <p>Max weight: {{ randomMammal.maxWeight }} kg</p>
+  </div>
 </template>
 
 <script>
-import TaskList from './components/TaskList.vue';
-import AddTask from './components/AddTask.vue';
-
 export default {
-  components: { TaskList, AddTask },
   data() {
     return {
-      tasks: [
-        { id: 1, name: "Make pancakes", done: false },
-        { id: 2, name: "Call the office", done: false },
-        { id: 3, name: "Hold a 4h coding session", done: false },
-        { id: 4, name: "Call Morgan", done: false },
-        { id: 5, name: "Make Lunch", done: false }
-      ]
-    }
+      randomMammal: null
+    };
   },
   methods: {
-    addTask(task) {
-      this.tasks.push({
-        id: this.tasks.length + 1,
-        name: task,
-        done: false
-      });
+    async fetchData() {
+      const response = await fetch("public/file.json");
+      const data = await response.json();
+      const randIndex = Math.floor(Math.random()*data.results.length);
+      this.randomMammal = data.results[randIndex];
     }
   }
-}
+};
 </script>
-
-<style>
-body {
-  background-color: #f5e1d3;
-  font-family: 'Poppins', sans-serif;
-  padding: 30px;
-}
-
-h1 {
-  font-family: 'Pacifico', cursive;
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
-</style>
