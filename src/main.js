@@ -1,6 +1,5 @@
-import { createApp } from "vue";
-
+import { createApp } from "vue"
 import App from './App.vue'
 
-App.component('Comp-two', CompTwo)
-App.mount("#app")
+
+createApp(App).mount("#app")
